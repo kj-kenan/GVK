@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  libretranslate:
+    image: libretranslate/libretranslate:latest
+    container_name: gvk_libretranslate
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - LT_LOAD_ONLY=tr,en  # Only load Turkish and English models
+    volumes:
+      - ./libretranslate_data:/home/libretranslate/.local
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/languages || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+# Optional: Add PostgreSQL for production
+# Uncomment below if you want to use PostgreSQL with Docker
+#  postgres:
+#    image: postgres:15-alpine
+#    container_name: gvk_postgres
+#    restart: unless-stopped
+#    ports:
+#      - "5432:5432"
+#    environment:
+#      - POSTGRES_DB=veterinary_clinic
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=your_secure_password
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data
+#
+#volumes:
+#  postgres_data:
+
+
+
+
