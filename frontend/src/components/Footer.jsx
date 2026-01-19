@@ -110,9 +110,16 @@ const Footer = () => {
                 </li>
                 <li className="flex items-center space-x-3">
                   <FaPhone className="text-accent flex-shrink-0" />
-                  <a href={`tel:${settings.phone}`} className="hover:text-white transition-colors">
-                    {settings.phone}
-                  </a>
+                  <div>
+                    <a href={`tel:${settings.phone}`} className="hover:text-white transition-colors block">
+                      {settings.phone}
+                    </a>
+                    {settings.mobile && (
+                      <a href={`tel:${settings.mobile}`} className="hover:text-white transition-colors block text-sm">
+                        {settings.mobile}
+                      </a>
+                    )}
+                  </div>
                 </li>
                 <li className="flex items-center space-x-3">
                   <FaEnvelope className="text-accent flex-shrink-0" />
@@ -127,8 +134,11 @@ const Footer = () => {
         
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-          <p>
+          <p className="mb-2">
             © 2024 Göztepe Veteriner Kliniği. {t('Tüm hakları saklıdır.', 'All rights reserved.')}
+          </p>
+          <p className="text-sm">
+            {t("1995'ten beri hizmetinizdeyiz.", 'Serving since 1995.')}
           </p>
         </div>
       </div>

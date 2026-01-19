@@ -10,7 +10,7 @@ class TeamMember(models.Model):
     name = models.CharField('Ad Soyad', max_length=200)
     title_tr = models.CharField('Ünvan (TR)', max_length=200)
     title_en = models.CharField('Ünvan (EN)', max_length=200, blank=True)
-    specialty_tr = models.CharField('Uzmanlık (TR)', max_length=200)
+    specialty_tr = models.CharField('Uzmanlık (TR)', max_length=200, blank=True)
     specialty_en = models.CharField('Uzmanlık (EN)', max_length=200, blank=True)
     bio_tr = models.TextField('Biyografi (TR)')
     bio_en = models.TextField('Biyografi (EN)', blank=True)

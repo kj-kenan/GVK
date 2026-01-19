@@ -33,12 +33,30 @@ const Home = () => {
           getTestimonials(),
         ]);
         
-        setServices(servicesRes.data.slice(0, 6));
-        setTeam(teamRes.data);
-        setBlogPosts(blogRes.data.results?.slice(0, 3) || blogRes.data.slice(0, 3));
-        setTestimonials(testimonialsRes.data.slice(0, 9));
+        // Handle different response formats safely
+        setServices(Array.isArray(servicesRes.data) ? servicesRes.data.slice(0, 6) : []);
+        setTeam(
+          teamRes.data.results 
+            ? teamRes.data.results 
+            : Array.isArray(teamRes.data) 
+              ? teamRes.data 
+              : []
+        );
+        setBlogPosts(
+          blogRes.data.results 
+            ? blogRes.data.results.slice(0, 3) 
+            : Array.isArray(blogRes.data) 
+              ? blogRes.data.slice(0, 3) 
+              : []
+        );
+        setTestimonials(Array.isArray(testimonialsRes.data) ? testimonialsRes.data.slice(0, 9) : []);
       } catch (error) {
         console.error('Error fetching data:', error);
+        // Set empty arrays so the page still renders
+        setServices([]);
+        setTeam([]);
+        setBlogPosts([]);
+        setTestimonials([]);
       } finally {
         setLoading(false);
       }
@@ -88,8 +106,8 @@ const Home = () => {
             transition={{ delay: 0.3, duration: 0.8 }}
           >
             {t(
-              'Modern veteriner hizmetleri ile hayvanlarınıza en iyi bakımı sunuyoruz',
-              'We provide the best care for your animals with modern veterinary services'
+              'Modern veteriner hizmetlerimizle patili dostlarımıza hak ettikleri ilgiyi gösteriyoruz.',
+              'We show our furry friends the care they deserve with our modern veterinary services.'
             )}
           </motion.p>
           <motion.div
@@ -173,9 +191,11 @@ const Home = () => {
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
             {team.map((member, index) => (
-              <TeamMemberCard key={member.id} member={member} index={index} />
+              <div key={member.id} className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] max-w-xs">
+                <TeamMemberCard member={member} index={index} />
+              </div>
             ))}
           </div>
         </div>
@@ -256,32 +276,34 @@ const Home = () => {
       {/* Google Reviews Section */}
       <ReviewsCarousel />
       
-      {/* Google Maps Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="section-title">{t('Konumumuz', 'Our Location')}</h2>
-            <p className="section-subtitle">
-              {t(
-                'Bizi ziyaret edin, evcil dostlarınızın sağlığı için yanınızdayız',
-                'Visit us, we are here for your pets\' health'
-              )}
-            </p>
-          </motion.div>
-          
-          <div className="max-w-5xl mx-auto">
-            <GoogleMap
-              apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
-              placeId={import.meta.env.VITE_GOOGLE_PLACE_ID}
-            />
+      {/* Google Maps Section - Only show if API key is configured */}
+      {import.meta.env.VITE_GOOGLE_MAPS_API_KEY && (
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="section-title">{t('Konumumuz', 'Our Location')}</h2>
+              <p className="section-subtitle">
+                {t(
+                  'Bizi ziyaret edin, evcil dostlarınızın sağlığı için yanınızdayız',
+                  'Visit us, we are here for your pets\' health'
+                )}
+              </p>
+            </motion.div>
+            
+            <div className="max-w-5xl mx-auto">
+              <GoogleMap
+                apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
+                placeId={import.meta.env.VITE_GOOGLE_PLACE_ID}
+              />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
       
       <ServiceModal
         service={selectedService}

@@ -34,7 +34,7 @@ const TeamMemberCard = ({ member, index }) => {
           src={member.photo}
           alt={member.name}
           effect="blur"
-          className="w-full h-64 object-cover"
+          className="w-full h-64 object-cover object-center"
         />
         
         {/* Bio Overlay */}

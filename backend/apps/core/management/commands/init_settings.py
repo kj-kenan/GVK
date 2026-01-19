@@ -10,7 +10,8 @@ class Command(BaseCommand):
             pk=1,
             defaults={
                 'address_tr': 'Merdivenköy, Fahrettin Kerim Gökay Cd 259/4, 34732 Kadıköy/İstanbul',
-                'phone': '0216 411 65 20',
+                'phone': '0216 411 6520',
+                'mobile': '+90 533 070 2424',
                 'email': 'goztepevet@gmail.com',
                 'admin_email': 'goztepevet@gmail.com',
                 'working_hours_weekday_tr': 'Pazartesi-Cuma 09:00-19:00',

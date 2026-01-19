@@ -11,6 +11,7 @@ class SiteSettings(models.Model):
     address_tr = models.TextField('Adres (TR)')
     address_en = models.TextField('Adres (EN)', blank=True)
     phone = models.CharField('Telefon', max_length=20)
+    mobile = models.CharField('Cep Telefonu', max_length=20, blank=True)
     email = models.EmailField('E-posta')
     
     # Working Hours

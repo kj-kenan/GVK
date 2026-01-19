@@ -93,10 +93,18 @@ const Contact = () => {
                       </h3>
                       <a
                         href={`tel:${settings.phone}`}
-                        className="text-gray-dark hover:text-primary transition-colors"
+                        className="text-gray-dark hover:text-primary transition-colors block"
                       >
                         {settings.phone}
                       </a>
+                      {settings.mobile && (
+                        <a
+                          href={`tel:${settings.mobile}`}
+                          className="text-gray-dark hover:text-primary transition-colors block mt-1"
+                        >
+                          {t('Cep:', 'Mobile:')} {settings.mobile}
+                        </a>
+                      )}
                     </div>
                   </div>
                   
