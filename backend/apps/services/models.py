@@ -22,6 +22,12 @@ class Service(models.Model):
         format='WEBP',
         options={'quality': 85}
     )
+    cover_thumbnail_avif = ImageSpecField(
+        source='cover_image',
+        processors=[ResizeToFill(400, 300)],
+        format='AVIF',
+        options={'quality': 75}
+    )
     is_active = models.BooleanField('Aktif', default=True)
     order = models.IntegerField('Sıra', default=0)
     created_at = models.DateTimeField('Oluşturulma', auto_now_add=True)
@@ -65,6 +71,12 @@ class ServiceImage(models.Model):
         processors=[ResizeToFill(400, 300)],
         format='WEBP',
         options={'quality': 85}
+    )
+    image_thumbnail_avif = ImageSpecField(
+        source='image',
+        processors=[ResizeToFill(400, 300)],
+        format='AVIF',
+        options={'quality': 75}
     )
     order = models.IntegerField('Sıra', default=0)
     

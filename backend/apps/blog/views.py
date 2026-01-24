@@ -26,7 +26,7 @@ class BlogPostViewSet(viewsets.ReadOnlyModelViewSet):
     - Detail: Returns complete post data by slug
     """
     permission_classes = [AllowAny]
-    queryset = BlogPost.objects.filter(is_published=True).select_related('category', 'author')
+    queryset = BlogPost.objects.filter(is_published=True).select_related('category').select_related('category', 'author')
     pagination_class = BlogPostPagination
     lookup_field = 'slug'
     

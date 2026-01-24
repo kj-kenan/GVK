@@ -25,6 +25,12 @@ class TeamMember(models.Model):
         format='WEBP',
         options={'quality': 90}
     )
+    photo_thumbnail_avif = ImageSpecField(
+        source='photo',
+        processors=[ResizeToFill(200, 200)],
+        format='AVIF',
+        options={'quality': 80}
+    )
     is_active = models.BooleanField('Aktif', default=True)
     order = models.IntegerField('Sıra', default=0)
     

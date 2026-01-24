@@ -9,8 +9,10 @@ import BlogCard from '../components/BlogCard';
 import TestimonialCard from '../components/TestimonialCard';
 import ServiceModal from '../components/ServiceModal';
 import Loading from '../components/Loading';
+import SkeletonCard from '../components/SkeletonCard';
 import ReviewsCarousel from '../components/GoogleReviews/ReviewsCarousel';
 import GoogleMap from '../components/GoogleMap';
+import SEOHead from '../components/SEOHead';
 import { FaArrowDown } from 'react-icons/fa';
 
 const Home = () => {
@@ -70,10 +72,19 @@ const Home = () => {
     setModalOpen(true);
   };
   
-  if (loading) return <Loading />;
+  // Show skeleton instead of loading spinner
+  const showSkeletons = loading;
   
   return (
-    <div className="home">
+    <>
+      <SEOHead 
+        title={t('Ana Sayfa', 'Home')}
+        description={t(
+          'Göztepe Veteriner Kliniği - Kadıköy İstanbul. Evcil dostlarınızın sağlığı için uzman veteriner hekimlerimizle 7/24 hizmetinizdeyiz.',
+          'Göztepe Veterinary Clinic - Kadıköy Istanbul. We are at your service 24/7 with our expert veterinarians for the health of your pets.'
+        )}
+      />
+      <div className="home">
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image with Overlay */}
@@ -155,14 +166,21 @@ const Home = () => {
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-            {services.map((service, index) => (
-              <ServiceCard
-                key={service.id}
-                service={service}
-                index={index}
-                onClick={handleServiceClick}
-              />
-            ))}
+            {showSkeletons ? (
+              // Show skeleton cards while loading
+              [...Array(6)].map((_, index) => (
+                <SkeletonCard key={index} type="service" />
+              ))
+            ) : (
+              services.map((service, index) => (
+                <ServiceCard
+                  key={service.id}
+                  service={service}
+                  index={index}
+                  onClick={handleServiceClick}
+                />
+              ))
+            )}
           </div>
           
           <div className="text-center">
@@ -310,7 +328,8 @@ const Home = () => {
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
       />
-    </div>
+      </div>
+    </>
   );
 };
 

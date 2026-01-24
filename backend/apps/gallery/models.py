@@ -20,6 +20,12 @@ class ClinicGallery(models.Model):
         format='WEBP',
         options={'quality': 85}
     )
+    image_thumbnail_avif = ImageSpecField(
+        source='image',
+        processors=[ResizeToFill(400, 300)],
+        format='AVIF',
+        options={'quality': 75}
+    )
     category_tr = models.CharField(
         'Kategori (TR)',
         max_length=100,

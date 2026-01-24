@@ -6,16 +6,24 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+# API v1 patterns
+api_v1_patterns = [
+    path('', include('apps.services.urls')),
+    path('', include('apps.team.urls')),
+    path('', include('apps.blog.urls')),
+    path('', include('apps.testimonials.urls')),
+    path('', include('apps.gallery.urls')),
+    path('', include('apps.contact.urls')),
+    path('', include('apps.core.urls')),
+    path('', include('apps.reviews.urls')),
+]
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('apps.services.urls')),
-    path('api/', include('apps.team.urls')),
-    path('api/', include('apps.blog.urls')),
-    path('api/', include('apps.testimonials.urls')),
-    path('api/', include('apps.gallery.urls')),
-    path('api/', include('apps.contact.urls')),
-    path('api/', include('apps.core.urls')),
-    path('api/', include('apps.reviews.urls')),
+    # API v1 (versioned)
+    path('api/v1/', include(api_v1_patterns)),
+    # API (non-versioned, for backwards compatibility)
+    path('api/', include(api_v1_patterns)),
 ]
 
 # Serve media files in development
