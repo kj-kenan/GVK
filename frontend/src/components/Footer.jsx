@@ -37,8 +37,8 @@ const Footer = () => {
             </div>
             <p className="text-gray-300 mb-4">
               {t(
-                'Evcil dostlarınızın sağlığı için modern veteriner hizmetleri sunuyoruz.',
-                'We provide modern veterinary services for your pet friends\' health.'
+                'Patili Dostlarınızın Sağlığı İçin Yanınızdayız',
+                'We Are Here for Your Pets\' Health'
               )}
             </p>
             <div className="flex space-x-4">
@@ -135,7 +135,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
           <p className="mb-2">
-            © 2024 Göztepe Veteriner Kliniği. {t('Tüm hakları saklıdır.', 'All rights reserved.')}
+            © 1995–{new Date().getFullYear()} Göztepe Veteriner Kliniği. {t('Tüm hakları saklıdır.', 'All rights reserved.')}
           </p>
           <p className="text-sm">
             {t("1995'ten beri hizmetinizdeyiz.", 'Serving since 1995.')}

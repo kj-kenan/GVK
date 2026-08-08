@@ -14,19 +14,20 @@ import Gallery from './pages/Gallery';
 import Testimonials from './pages/Testimonials';
 import Contact from './pages/Contact';
 import { initGA, pageview } from './utils/analytics';
+import ServiceDetail from './pages/ServiceDetail';
 
 // Component to track page views
 function Analytics() {
   const location = useLocation();
-  
+
   useEffect(() => {
     initGA();
   }, []);
-  
+
   useEffect(() => {
     pageview(location.pathname + location.search);
   }, [location]);
-  
+
   return null;
 }
 
@@ -48,6 +49,7 @@ function App() {
                 <Route path="/gallery" element={<Gallery />} />
                 <Route path="/testimonials" element={<Testimonials />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/hizmetler/:slug" element={<ServiceDetail />} />
               </Routes>
             </main>
             <Footer />

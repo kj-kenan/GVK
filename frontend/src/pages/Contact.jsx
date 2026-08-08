@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 import { getSiteSettings } from '../utils/api';
 import ContactForm from '../components/ContactForm';
-import { FaMapMarkerAlt, FaPhone, FaEnvelope, FaClock, FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaPhone, FaMobileAlt, FaEnvelope, FaClock, FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 
 const Contact = () => {
   const { t, getField } = useLanguage();
@@ -108,6 +108,26 @@ const Contact = () => {
                     </div>
                   </div>
                   
+                  {/* Mobile */}
+                  {settings.mobile && (
+                    <div className="flex items-start space-x-4">
+                      <div className="bg-primary text-white p-3 rounded-lg">
+                        <FaMobileAlt className="text-xl" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-dark mb-1">
+                          {t('Cep Telefonu', 'Mobile')}
+                        </h3>
+                        <a
+                          href={`tel:${settings.mobile}`}
+                          className="text-gray-dark hover:text-primary transition-colors"
+                        >
+                          {settings.mobile}
+                        </a>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Email */}
                   <div className="flex items-start space-x-4">
                     <div className="bg-primary text-white p-3 rounded-lg">
@@ -136,11 +156,9 @@ const Contact = () => {
                         {t('Çalışma Saatleri', 'Working Hours')}
                       </h3>
                       <p className="text-gray-dark">
-                        <strong>{t('Hafta İçi:', 'Weekdays:')}</strong>{' '}
                         {getField(settings, 'working_hours_weekday')}
                       </p>
                       <p className="text-gray-dark">
-                        <strong>{t('Hafta Sonu:', 'Weekend:')}</strong>{' '}
                         {getField(settings, 'working_hours_weekend')}
                       </p>
                     </div>

@@ -8,7 +8,7 @@ class SiteSettingsSerializer(serializers.ModelSerializer):
     class Meta:
         model = SiteSettings
         fields = [
-            'address_tr', 'address_en', 'phone', 'email',
+            'address_tr', 'address_en', 'phone', 'mobile', 'email',
             'working_hours_weekday_tr', 'working_hours_weekday_en',
             'working_hours_weekend_tr', 'working_hours_weekend_en',
             'google_maps_embed_url', 'facebook_url', 'instagram_url', 'twitter_url'
