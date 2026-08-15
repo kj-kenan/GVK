@@ -54,7 +54,7 @@ const Navbar = () => {
               alt="Göztepe Veteriner Kliniği" 
               className="h-16 w-16 md:h-20 md:w-20 object-contain drop-shadow-lg"
             />
-            <span className={`text-2xl md:text-3xl font-heading font-bold ${
+            <span className={`hidden sm:block text-2xl md:text-3xl font-heading font-bold ${
               scrolled || !isHomePage ? 'text-primary' : 'text-white'
             }`}>
               Göztepe Veteriner Kliniği
