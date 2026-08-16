@@ -414,34 +414,29 @@ const Home = () => {
       {/* Google Reviews Section */}
       <ReviewsCarousel />
       
-      {/* Google Maps Section - Only show if API key is configured */}
-      {import.meta.env.VITE_GOOGLE_MAPS_API_KEY && (
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-12"
-            >
-              <h2 className="section-title">{t('Konumumuz', 'Our Location')}</h2>
-              <p className="section-subtitle">
-                {t(
-                  'Bizi ziyaret edin, evcil dostlarınızın sağlığı için yanınızdayız',
-                  'Visit us, we are here for your pets\' health'
-                )}
-              </p>
-            </motion.div>
-            
-            <div className="max-w-5xl mx-auto">
-              <GoogleMap
-                apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY}
-                placeId={import.meta.env.VITE_GOOGLE_PLACE_ID}
-              />
-            </div>
+      {/* Google Maps Section - Free iframe embed */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="section-title">{t('Konumumuz', 'Our Location')}</h2>
+            <p className="section-subtitle">
+              {t(
+                'Bizi ziyaret edin, evcil dostlarınızın sağlığı için yanınızdayız',
+                'Visit us, we are here for your pets\' health'
+              )}
+            </p>
+          </motion.div>
+
+          <div className="max-w-5xl mx-auto h-[450px]">
+            <GoogleMap />
           </div>
-        </section>
-      )}
+        </div>
+      </section>
       
       <ServiceModal
         service={selectedService}
