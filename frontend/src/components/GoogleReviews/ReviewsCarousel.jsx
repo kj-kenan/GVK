@@ -23,7 +23,7 @@ const ReviewsCarousel = () => {
 
   const fetchReviews = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/reviews/summary/');
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'https://gvk-production-686c.up.railway.app/api'}/reviews/summary/`);
       const data = await response.json();
       
       if (response.ok) {
