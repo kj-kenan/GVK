@@ -207,7 +207,11 @@ LIBRETRANSLATE_URL = os.getenv('LIBRETRANSLATE_URL', 'http://localhost:5000')
 
 # Security Settings (for production)
 if not DEBUG:
-    SECURE_SSL_REDIRECT = True
+    # Railway (and most cloud platforms) terminate SSL at the edge proxy.
+    # Django receives plain HTTP internally, so SECURE_SSL_REDIRECT causes
+    # infinite redirect loops. We trust the X-Forwarded-Proto header instead.
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = False  # SSL handled by Railway's edge proxy
     SECURE_HSTS_SECONDS = 31536000  # 1 year
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
