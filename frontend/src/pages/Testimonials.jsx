@@ -6,6 +6,7 @@ import { useApi } from '../hooks/useApi';
 import TestimonialCard from '../components/TestimonialCard';
 import TestimonialUploadModal from '../components/TestimonialUploadModal';
 import Loading from '../components/Loading';
+import SEOHead from '../components/SEOHead';
 
 const Testimonials = () => {
   const { t } = useLanguage();
@@ -20,6 +21,12 @@ const Testimonials = () => {
   if (loading) return <Loading />;
   
   return (
+    <>
+    <SEOHead
+      title="Sizden Gelenler"
+      description="Göztepe Veteriner Kliniği müşteri yorumları — Kadıköy'deki veteriner kliniğimizin mutlu hasta sahiplerinden fotoğraflar ve deneyimler."
+      url="https://goztepevet.com.tr/testimonials"
+    />
     <div className="pt-28 md:pt-32 min-h-screen">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-primary to-secondary text-white py-16">
@@ -122,6 +129,7 @@ const Testimonials = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

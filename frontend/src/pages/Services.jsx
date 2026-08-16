@@ -6,6 +6,7 @@ import { useApi } from '../hooks/useApi';
 import ServiceCard from '../components/ServiceCard';
 import ServiceModal from '../components/ServiceModal';
 import Loading from '../components/Loading';
+import SEOHead from '../components/SEOHead';
 
 const Services = () => {
   const { t } = useLanguage();
@@ -21,6 +22,12 @@ const Services = () => {
   if (loading) return <Loading />;
   
   return (
+    <>
+    <SEOHead
+      title="Hizmetlerimiz"
+      description="Göztepe Veteriner Kliniği Kadıköy İstanbul — Dahiliye, cerrahi, radyoloji, kardiyoloji, KBB, anesteziyoloji ve acil veteriner hizmetleri. Modern ekipmanlarla uzman kadromuzla yanınızdayız."
+      url="https://goztepevet.com.tr/services"
+    />
     <div className="pt-28 md:pt-32 min-h-screen">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-primary to-secondary text-white py-16">
@@ -74,6 +81,7 @@ const Services = () => {
         onClose={() => setModalOpen(false)}
       />
     </div>
+    </>
   );
 };
 

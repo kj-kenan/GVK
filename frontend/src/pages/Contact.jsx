@@ -4,6 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { getSiteSettings } from '../utils/api';
 import ContactForm from '../components/ContactForm';
 import { FaMapMarkerAlt, FaPhone, FaMobileAlt, FaEnvelope, FaClock, FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
+import SEOHead from '../components/SEOHead';
 
 const Contact = () => {
   const { t, getField } = useLanguage();
@@ -16,6 +17,12 @@ const Contact = () => {
   }, []);
   
   return (
+    <>
+    <SEOHead
+      title="İletişim"
+      description="Göztepe Veteriner Kliniği iletişim — Fahrettin Kerim Gökay Caddesi No:259 Kadıköy İstanbul. Tel: 0216 411 6520 | 0533 070 2424. Randevu ve bilgi için bize ulaşın."
+      url="https://goztepevet.com.tr/contact"
+    />
     <div className="pt-28 md:pt-32 min-h-screen">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-primary to-secondary text-white py-16">
@@ -237,6 +244,7 @@ const Contact = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

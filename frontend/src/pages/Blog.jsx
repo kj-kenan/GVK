@@ -4,6 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { getBlogPosts, getBlogCategories } from '../utils/api';
 import BlogCard from '../components/BlogCard';
 import Loading from '../components/Loading';
+import SEOHead from '../components/SEOHead';
 
 const Blog = () => {
   const { t, getField } = useLanguage();
@@ -63,6 +64,12 @@ const Blog = () => {
   if (loading && page === 1) return <Loading />;
   
   return (
+    <>
+    <SEOHead
+      title="Blog"
+      description="Göztepe Veteriner Kliniği blogu — Evcil hayvan sağlığı, bakımı ve beslenmesi hakkında uzman veteriner hekimlerimizin ipuçları ve güncel bilgiler. Kadıköy İstanbul."
+      url="https://goztepevet.com.tr/blog"
+    />
     <div className="pt-28 md:pt-32 min-h-screen">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-primary to-secondary text-white py-16">
@@ -159,6 +166,7 @@ const Blog = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

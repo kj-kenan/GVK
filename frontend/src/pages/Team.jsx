@@ -5,6 +5,7 @@ import { getTeam } from '../utils/api';
 import { useApi } from '../hooks/useApi';
 import TeamMemberCard from '../components/TeamMemberCard';
 import Loading from '../components/Loading';
+import SEOHead from '../components/SEOHead';
 
 const Team = () => {
   const { t } = useLanguage();
@@ -13,6 +14,12 @@ const Team = () => {
   if (loading) return <Loading />;
   
   return (
+    <>
+    <SEOHead
+      title="Ekibimiz"
+      description="Göztepe Veteriner Kliniği uzman veteriner hekimleri — Kadıköy İstanbul'da deneyimli veteriner kadromuzla evcil dostlarınıza en iyi bakımı sunuyoruz."
+      url="https://goztepevet.com.tr/team"
+    />
     <div className="pt-28 md:pt-32 min-h-screen">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-primary to-secondary text-white py-16">
@@ -55,6 +62,7 @@ const Team = () => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

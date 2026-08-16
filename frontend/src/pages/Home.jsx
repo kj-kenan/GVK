@@ -77,12 +77,13 @@ const Home = () => {
   
   return (
     <>
-      <SEOHead 
-        title={t('Ana Sayfa', 'Home')}
+      <SEOHead
+        title={t('Kadıköy İstanbul Veteriner Kliniği', 'Veterinary Clinic Kadıköy Istanbul')}
         description={t(
-          'Göztepe Veteriner Kliniği - Kadıköy İstanbul. Evcil dostlarınızın sağlığı için uzman veteriner hekimlerimizle 7/24 hizmetinizdeyiz.',
-          'Göztepe Veterinary Clinic - Kadıköy Istanbul. We are at your service 24/7 with our expert veterinarians for the health of your pets.'
+          'Göztepe Veteriner Kliniği - Kadıköy İstanbul. Dahiliye, cerrahi, radyoloji, kardiyoloji, KBB, anesteziyoloji ve acil veteriner hizmetleri. Tel: 0216 411 6520',
+          'Göztepe Veterinary Clinic - Kadıköy Istanbul. Internal medicine, surgery, radiology, cardiology, ENT, anesthesiology and emergency vet services.'
         )}
+        url="https://goztepevet.com.tr"
       />
       <div className="home">
       {/* Hero Section */}

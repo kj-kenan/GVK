@@ -4,6 +4,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { getGallery } from '../utils/api';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import Loading from '../components/Loading';
+import SEOHead from '../components/SEOHead';
 
 const Gallery = () => {
   const { t, getField } = useLanguage();
@@ -36,6 +37,12 @@ const Gallery = () => {
   if (loading) return <Loading />;
   
   return (
+    <>
+    <SEOHead
+      title="Galeri"
+      description="Göztepe Veteriner Kliniği galeri — Kadıköy İstanbul'daki modern kliniğimizden ve sevimli hastalarımızdan fotoğraflar."
+      url="https://goztepevet.com.tr/gallery"
+    />
     <div className="pt-28 md:pt-32 min-h-screen">
       {/* Hero Section */}
       <section className="bg-gradient-to-r from-primary to-secondary text-white py-16">
@@ -157,6 +164,7 @@ const Gallery = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
