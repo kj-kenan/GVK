@@ -10,7 +10,6 @@ import TestimonialCard from '../components/TestimonialCard';
 import ServiceModal from '../components/ServiceModal';
 import Loading from '../components/Loading';
 import SkeletonCard from '../components/SkeletonCard';
-import ReviewsCarousel from '../components/GoogleReviews/ReviewsCarousel';
 import GoogleMap from '../components/GoogleMap';
 import SEOHead from '../components/SEOHead';
 import { FaArrowDown } from 'react-icons/fa';
@@ -412,7 +411,6 @@ const Home = () => {
       )}
       
       {/* Google Reviews Section */}
-      <ReviewsCarousel />
       
       {/* Google Maps Section - Free iframe embed */}
       <section className="py-20 bg-white">
