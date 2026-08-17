@@ -217,29 +217,28 @@ const Contact = () => {
           </div>
           
           {/* Google Maps */}
-          {settings?.google_maps_embed_url && (
-            <motion.div
-              className="mt-12"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              <h2 className="text-3xl font-heading font-bold text-dark mb-6 text-center">
-                {t('Konumumuz', 'Our Location')}
-              </h2>
-              <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
-                <iframe
-                  src={settings.google_maps_embed_url}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Google Maps"
-                />
-              </div>
-            </motion.div>
+          <motion.div
+            className="mt-12"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+          >
+            <h2 className="text-3xl font-heading font-bold text-dark mb-6 text-center">
+              {t('Konumumuz', 'Our Location')}
+            </h2>
+            <div className="aspect-video rounded-xl overflow-hidden shadow-lg">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5852.604965382592!2d29.068227455820825!3d40.9803931954377!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cac796f0547693%3A0xad34aa614d5c9afb!2zR8OWWlRFUEUgVkVURVLEsE5FUiBLTMSwTsSwxJ7EsA!5e0!3m2!1str!2sus!4v1786879276026!5m2!1str!2sus"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Göztepe Veteriner Kliniği Konumu"
+              />
+            </div>
+          </motion.div>
           )}
         </div>
       </section>
